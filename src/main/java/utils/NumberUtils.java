@@ -37,13 +37,29 @@ public final class NumberUtils {
      * @return
      */
     public static long gcd(final long a, final long b) {
-        final long lesser = Math.min(a, b);
+        final long lesser;
+        final long greater;
+        if (a > b) {
+            lesser = b;
+            greater = a;
+        } else {
+            lesser = a;
+            greater = b;
+        }
+
         long gcd = 1;
-        for (long i = 1; i <= lesser; i++) {
-            if (a % i == 0 && b % i == 0) {
-                gcd = i;
+        for (long x = 1; x <= (int) Math.sqrt(lesser); x++) {
+            if (lesser % x == 0) {
+                final long y = lesser / x;
+                if (greater % x == 0) {
+                    gcd = Math.max(gcd, x);
+                }
+                if (greater % y == 0) {
+                    gcd = Math.max(gcd, y);
+                }
             }
         }
+
         return gcd;
     }
 
