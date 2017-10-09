@@ -7,7 +7,7 @@ import utils.PrimeSieve;
  *
  * Find the sum of all the primes below two million.
  */
-public class Problem10 extends EulerProblem {
+public final class Problem10 extends EulerProblem {
     private static final int LIMIT = (int) 2e6;
     public static void main(String[] args) {
         System.out.println(new Problem10().run());
