@@ -54,6 +54,10 @@ public final class PrimeSieve {
         return this.numPrimes;
     }
 
+    public List<Integer> getAllPrimes() {
+        return this.primesAsList;
+    }
+
     private List<Integer> getPrimesAsList(final boolean[] primesInArray) {
         final List<Integer> primesAsList = new ArrayList<>();
         for (int i = 0; i < primesInArray.length; i++) {
