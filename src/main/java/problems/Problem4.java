@@ -8,15 +8,15 @@ import utils.NumberUtils;
  *
  * Find the largest palindrome made from the product of two 3-digit numbers.
  */
-public class Problem4 extends EulerProblem {
+public final class Problem4 extends EulerProblem {
     private static final int THREE_DIGIT_UPPER_BOUND = 1000;
     public static void main(String [] args) {
-        new Problem4().run();
+        System.out.println(new Problem4().run());
     }
 
     @Override
-    public void run() {
-        int largestProduct = 0;
+    public long run() {
+        long largestProduct = 0;
         for (int x = 0; x < THREE_DIGIT_UPPER_BOUND; x++) {
             for (int y = 0; y < THREE_DIGIT_UPPER_BOUND; y++) {
                 int product = x*y;
@@ -25,6 +25,7 @@ public class Problem4 extends EulerProblem {
                 }
             }
         }
-        System.out.println(largestProduct);
+
+        return largestProduct;
     }
 }

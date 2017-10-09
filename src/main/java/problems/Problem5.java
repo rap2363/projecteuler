@@ -7,17 +7,18 @@ import utils.NumberUtils;
  *
  * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
  */
-public class Problem5 extends EulerProblem {
+public final class Problem5 extends EulerProblem {
+
     public static void main(String [] args) {
-        new Problem5().run();
+        System.out.println(new Problem5().run());
     }
 
     @Override
-    public void run() {
+    public long run() {
         long currentLCM = 1;
         for (int i = 1; i <= 20; i++) {
             currentLCM = NumberUtils.lcm(currentLCM, i);
         }
-        System.out.println(currentLCM);
+        return currentLCM;
     }
 }
