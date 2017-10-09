@@ -42,6 +42,11 @@ public final class ProblemsTest {
 
     @Test
     public void testProblem12() {
-        assertEquals(-1, new Problem12().run());
+        assertEquals(76576500L, new Problem12().run());
+    }
+
+    @Test
+    public void testProblem59() {
+        assertEquals(-1, new Problem59().run());
     }
 }

@@ -1,6 +1,8 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class NumberUtils {
@@ -48,7 +50,8 @@ public final class NumberUtils {
         }
 
         long gcd = 1;
-        for (long x = 1; x <= (int) Math.sqrt(lesser); x++) {
+        final double limit = Math.sqrt(lesser);
+        for (long x = 1; x <= limit; x++) {
             if (lesser % x == 0) {
                 final long y = lesser / x;
                 if (greater % x == 0) {
@@ -61,6 +64,34 @@ public final class NumberUtils {
         }
 
         return gcd;
+    }
+
+    /**
+     * Returns an ordered list of the divisors of a number
+     *
+     * @param num
+     * @return
+     */
+    public static List<Long> getDivisors(final long num) {
+        final List<Long> smallerDivisors = new ArrayList<>();
+        final List<Long> largerDivisors = new ArrayList<>();
+        final double limit = Math.sqrt(num);
+        for (long x = 1; x <= limit; x++) {
+            if (num % x == 0) {
+                smallerDivisors.add(x);
+                if (x != limit) {
+                    largerDivisors.add(0, num / x);
+                }
+            }
+        }
+        final List<Long> allDivisors = new ArrayList<>(smallerDivisors.size() + largerDivisors.size());
+        for (long divisor : smallerDivisors) {
+            allDivisors.add(divisor);
+        }
+        for (long divisor : largerDivisors) {
+            allDivisors.add(divisor);
+        }
+        return allDivisors;
     }
 
     /**
