@@ -23,7 +23,7 @@ import utils.NumberUtils;
 
    What is the value of the first triangle number to have over five hundred divisors?
  */
-public final class Problem12 extends EulerProblem {
+public final class Problem12 implements EulerProblem {
 
     public static void main (String[] args) {
         System.out.println(new Problem12().run());

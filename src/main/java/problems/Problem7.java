@@ -7,7 +7,7 @@ import utils.PrimeSieve;
  *
  * What is the 10 001st prime number?
  */
-public final class Problem7 extends EulerProblem {
+public final class Problem7 implements EulerProblem {
     private static final int NTH_PRIME = 10001;
 
     public static void main(String [] args) {

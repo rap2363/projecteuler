@@ -46,7 +46,14 @@ public final class ProblemsTest {
     }
 
     @Test
+    public void testProblem15() {
+        assertEquals(2, new Problem15(1).run());
+        assertEquals(6, new Problem15(2).run());
+        assertEquals(137846528820L, new Problem15(20).run());
+    }
+
+    @Test
     public void testProblem59() {
-        assertEquals(-1, new Problem59().run());
+        assertEquals(107359L, new Problem59().run());
     }
 }

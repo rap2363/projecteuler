@@ -5,7 +5,7 @@ import utils.NumberUtils;
 /**
  * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
  */
-public final class Problem6 extends EulerProblem {
+public final class Problem6 implements EulerProblem {
 
     public static void main(String[] args) {
         System.out.println(new Problem6().run());

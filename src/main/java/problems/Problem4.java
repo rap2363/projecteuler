@@ -8,7 +8,7 @@ import utils.NumberUtils;
  *
  * Find the largest palindrome made from the product of two 3-digit numbers.
  */
-public final class Problem4 extends EulerProblem {
+public final class Problem4 implements EulerProblem {
     private static final int THREE_DIGIT_UPPER_BOUND = 1000;
     public static void main(String [] args) {
         System.out.println(new Problem4().run());
