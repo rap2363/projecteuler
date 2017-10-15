@@ -1,8 +1,9 @@
 package utils;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
+
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
 public final class NumberUtils {
@@ -123,5 +124,89 @@ public final class NumberUtils {
      */
     public static long sumOfFirstNSquares(final long n) {
         return n * (n + 1) * (2 * n + 1) / 6;
+    }
+
+    /**
+     * Count the number of total letters in a number representation (from English).
+     *
+     * For example: 3 --> three --> 5 (letters in the word)
+     *              103 --> one hundred and three --> 3 + 7 + 3 + 5 --> 18
+     *
+     * @param num
+     * @return
+     */
+    public static int countLetters(final int num) {
+        return LetterCounter.count(num);
+    }
+
+    private static class LetterCounter {
+        private static final int AND = 3;
+        private static final ImmutableMap<Integer, Integer> numberCounts = ImmutableMap.<Integer, Integer>builder()
+                .put(1, 3)    // one
+                .put(2, 3)    // two
+                .put(3, 5)    // three
+                .put(4, 4)    // four
+                .put(5, 4)    // five
+                .put(6, 3)    // six
+                .put(7, 5)    // seven
+                .put(8, 5)    // eight
+                .put(9, 4)    // nine
+                .put(10, 3)   // ten
+                .put(11, 6)   // eleven
+                .put(12, 6)   // twelve
+                .put(13, 8)   // thirteen
+                .put(14, 8)   // fourteen
+                .put(15, 7)   // fifteen
+                .put(16, 7)   // sixteen
+                .put(17, 9)   // seventeen
+                .put(18, 8)   // eighteen
+                .put(19, 8)   // nineteen
+                .put(20, 6)   // twenty
+                .put(30, 6)   // thirty
+                .put(40, 5)   // forty
+                .put(50, 5)   // fifty
+                .put(60, 5)   // sixty
+                .put(70, 7)   // seventy
+                .put(80, 6)   // eighty
+                .put(90, 6)   // ninety
+                .put(100, 7)  // hundred
+                .put(1000, 8) // thousand
+                .build();
+
+        /**
+         * Counts the number of letters via recursion. Only works on numbers less than 1000
+         *
+         * @param num
+         * @return
+         */
+        private static int count(final int num) {
+            Preconditions.checkArgument(num <= 1000);
+            if (num == 0) {
+                return 0;
+            }
+
+            if (num < 20) {
+                return numberCounts.get(num);
+            }
+
+            if (num < 100) {
+                return numberCounts.get((num / 10) * 10) + count(num % 10);
+            }
+
+            // Since we never say "and zero", we need to handle this case specially.
+            if (num % 100 == 0 && num < 1000) {
+                return numberCounts.get(num / 100) + numberCounts.get(100);
+            }
+
+            if (num < 1000) {
+                return numberCounts.get(num / 100) + numberCounts.get(100) + AND + count(num % 100);
+            }
+
+            if (num == 1000) {
+                return numberCounts.get(1) + numberCounts.get(1000);
+            }
+
+            return 0;
+        }
     }
 }

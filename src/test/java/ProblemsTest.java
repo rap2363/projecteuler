@@ -53,6 +53,16 @@ public final class ProblemsTest {
     }
 
     @Test
+    public void testProblem17() {
+        assertEquals(21124, new Problem17().run());
+    }
+
+    @Test
+    public void testProblem21() {
+        assertEquals(31626, new Problem21().run());
+    }
+
+    @Test
     public void testProblem59() {
         assertEquals(107359L, new Problem59().run());
     }
