@@ -43,7 +43,7 @@ public final class Problem59 implements EulerProblem {
 
     public Problem59() {
         final ClassLoader classLoader = getClass().getClassLoader();
-        final File englishWordsFile = new File(classLoader.getResource("dictionary.txt").getFile());
+        final File englishWordsFile = new File(classLoader.getResource("simple_dictionary.txt").getFile());
         this.englishWords = new HashSet<>();
         try (final Scanner scanner = new Scanner(englishWordsFile)) {
             while (scanner.hasNextLine()) {
