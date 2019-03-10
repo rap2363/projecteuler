@@ -215,7 +215,7 @@ public final class NumberUtils {
     }
 
     /**
-     * Calculates base ^ exponent mod n
+     * Calculates x ^ y mod n quickly.
      */
     public static long modPower(long x, long y, final long n) {
         // Initialize result
