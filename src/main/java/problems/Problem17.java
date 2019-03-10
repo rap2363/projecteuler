@@ -1,8 +1,7 @@
 package problems;
 
-import utils.NumberUtils;
-
 import java.util.stream.IntStream;
+import utils.NumberUtils;
 
 /**
  * If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19
@@ -15,15 +14,14 @@ import java.util.stream.IntStream;
  * British usage.
  */
 public final class Problem17 implements EulerProblem {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         System.out.println((new Problem17()).run());
     }
 
     @Override
     public long run() {
         return IntStream.rangeClosed(1, 1000)
-                .parallel()
-                .map(NumberUtils::countLetters)
-                .sum();
+            .map(NumberUtils::countLetters)
+            .sum();
     }
 }

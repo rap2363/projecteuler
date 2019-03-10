@@ -2,7 +2,6 @@ package utils;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,10 +55,10 @@ public final class NumberUtils {
             if (lesser % x == 0) {
                 final long y = lesser / x;
                 if (greater % x == 0) {
-                    gcd = Math.max(gcd, x);
+                    gcd = x < gcd ? gcd : x;
                 }
                 if (greater % y == 0) {
-                    gcd = Math.max(gcd, y);
+                    gcd = y < gcd ? gcd : y;
                 }
             }
         }
@@ -139,39 +138,44 @@ public final class NumberUtils {
         return LetterCounter.count(num);
     }
 
+    public static boolean isPerfectSquare(final double radicalValue) {
+        final double value = Math.sqrt(radicalValue);
+        return value == Math.round(value);
+    }
+
     private static class LetterCounter {
         private static final int AND = 3;
         private static final ImmutableMap<Integer, Integer> numberCounts = ImmutableMap.<Integer, Integer>builder()
-                .put(1, 3)    // one
-                .put(2, 3)    // two
-                .put(3, 5)    // three
-                .put(4, 4)    // four
-                .put(5, 4)    // five
-                .put(6, 3)    // six
-                .put(7, 5)    // seven
-                .put(8, 5)    // eight
-                .put(9, 4)    // nine
-                .put(10, 3)   // ten
-                .put(11, 6)   // eleven
-                .put(12, 6)   // twelve
-                .put(13, 8)   // thirteen
-                .put(14, 8)   // fourteen
-                .put(15, 7)   // fifteen
-                .put(16, 7)   // sixteen
-                .put(17, 9)   // seventeen
-                .put(18, 8)   // eighteen
-                .put(19, 8)   // nineteen
-                .put(20, 6)   // twenty
-                .put(30, 6)   // thirty
-                .put(40, 5)   // forty
-                .put(50, 5)   // fifty
-                .put(60, 5)   // sixty
-                .put(70, 7)   // seventy
-                .put(80, 6)   // eighty
-                .put(90, 6)   // ninety
-                .put(100, 7)  // hundred
-                .put(1000, 8) // thousand
-                .build();
+            .put(1, 3)    // one
+            .put(2, 3)    // two
+            .put(3, 5)    // three
+            .put(4, 4)    // four
+            .put(5, 4)    // five
+            .put(6, 3)    // six
+            .put(7, 5)    // seven
+            .put(8, 5)    // eight
+            .put(9, 4)    // nine
+            .put(10, 3)   // ten
+            .put(11, 6)   // eleven
+            .put(12, 6)   // twelve
+            .put(13, 8)   // thirteen
+            .put(14, 8)   // fourteen
+            .put(15, 7)   // fifteen
+            .put(16, 7)   // sixteen
+            .put(17, 9)   // seventeen
+            .put(18, 8)   // eighteen
+            .put(19, 8)   // nineteen
+            .put(20, 6)   // twenty
+            .put(30, 6)   // thirty
+            .put(40, 5)   // forty
+            .put(50, 5)   // fifty
+            .put(60, 5)   // sixty
+            .put(70, 7)   // seventy
+            .put(80, 6)   // eighty
+            .put(90, 6)   // ninety
+            .put(100, 7)  // hundred
+            .put(1000, 8) // thousand
+            .build();
 
         /**
          * Counts the number of letters via recursion. Only works on numbers less than 1000
@@ -208,5 +212,42 @@ public final class NumberUtils {
 
             return 0;
         }
+    }
+
+    /**
+     * Calculates base ^ exponent mod n
+     */
+    public static long modPower(long x, long y, final long n) {
+        // Initialize result
+        long res = 1;
+
+        // Update x if it is more
+        // than or equal to n
+        x %= n;
+
+        while (y > 0) {
+            // If y is odd, multiply x
+            // with result
+            if ((y & 1) == 1) {
+                res = (res * x) % n;
+            }
+
+            // y must be even now
+            // y = y / 2
+            y = y >> 1;
+            x = (x * x) % n;
+        }
+        return res;
+    }
+
+    public static long findCycleExponent(final long base, final long n) {
+        long cycleN = 1;
+        long newNumber = base;
+        do {
+            newNumber *= base;
+            newNumber %= n;
+            cycleN++;
+        } while (base != newNumber);
+        return cycleN;
     }
 }

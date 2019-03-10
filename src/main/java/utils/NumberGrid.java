@@ -21,7 +21,7 @@ public final class NumberGrid {
         }
     }
 
-    /**
+    /**util
      * According to a func, find the maximizing index in the grid by traversing the grid in specific directions and
      * incorporating a numElements number of elements.
      *

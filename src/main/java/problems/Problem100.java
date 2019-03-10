@@ -12,22 +12,20 @@ import utils.NumberUtils;
  * By finding the first arrangement to contain over 10^12 = 1,000,000,000,000 discs in total, determine the number of
  * blue discs that the box would contain.
  *
- * Solution: For a box of R red disks and B blue disks, the arrangement would be met if we had:
- *           B(B-1) / R(R+1) = 1/2 --> 2B^2 - 2B - (R^2 - R).
+ * Solution: For a box of T disks total and B blue disks, the arrangement would be met if we had:
+ *           B(B-1) / T(T+1) = 1/2 --> 2B^2 - 2B = (T^2 - T).
  *
  * We can find such arrangements quickly by solving the quadratic formula and finding when we have integer solutions
  * for B:
  *
- * B = 0.5 * (1 + sqrt(1 + 2(R^2 - R)))
+ * B = 0.5 * (1 + sqrt(1 + 2(T^2 - T)))
  *
- * In other words, we'll have such an arrangement when sqrt(1 + 2() yields an even number.
+ * In other words, we'll have such an arrangement when sqrt(1 + 2(T^2 - T)) yields an integer.
  *
- * However, because the problem is asking to look for arrangements after 10^12, brute force searching will not yield
- * a good result. Instead, we can reduce our search space simply by **generating** the results in advance.
- *
- * sqrt(10^12) = 10^6. So if we just iterate from 10^6
+ * We can brute force search to find the lowest T >= 10**12 such that we obtain an integer value for the radical.
  */
 public final class Problem100 implements EulerProblem {
+    private static final long STARTING_VALUE = 1000000000000L;
 
     public static void main(String[] args) {
         System.out.println(new Problem100().run());
@@ -35,8 +33,14 @@ public final class Problem100 implements EulerProblem {
 
     @Override
     public long run() {
-        System.out.println(NumberUtils.sumOfFirstN(14));
-        System.out.println(NumberUtils.sumOfFirstN(20));
-        return 0;
+        for (long totalDisks = STARTING_VALUE; totalDisks < 10 * STARTING_VALUE; totalDisks++) {
+            final double radicalValue = 1 + 2 * totalDisks * (totalDisks - 1);
+            if (NumberUtils.isPerfectSquare(radicalValue)) {
+                System.out.println("Total Disks: " + totalDisks);
+                return (long) (0.5 * (1 + Math.sqrt(radicalValue)));
+            }
+        }
+
+        throw new IllegalStateException();
     }
 }

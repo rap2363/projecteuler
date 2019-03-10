@@ -1,7 +1,19 @@
-import org.junit.Test;
-import problems.*;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import problems.Problem10;
+import problems.Problem11;
+import problems.Problem12;
+import problems.Problem15;
+import problems.Problem17;
+import problems.Problem182;
+import problems.Problem21;
+import problems.Problem4;
+import problems.Problem5;
+import problems.Problem59;
+import problems.Problem6;
+import problems.Problem7;
+import problems.Problem8;
 
 public final class ProblemsTest {
 
@@ -65,5 +77,10 @@ public final class ProblemsTest {
     @Test
     public void testProblem59() {
         assertEquals(107359L, new Problem59().run());
+    }
+
+    @Test
+    public void testProblem182() {
+        assertEquals(399788195976L, new Problem182().run());
     }
 }
