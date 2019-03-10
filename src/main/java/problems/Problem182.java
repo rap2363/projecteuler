@@ -32,7 +32,18 @@ import utils.NumberUtils;
  * Choose p=1009 and q=3643.
  * Find the sum of all values of e, 1<e<φ(1009,3643) and gcd(e,φ)=1, so that the number of unconcealed messages for this value of e is at a minimum.
  *
- * Solution:
+ * Solution: To solve this efficiently we first make use of the fact that if m^e == 1 % N, then m^(ne) == 1 % N for
+ * all n. We iterate through the messages and find these e values we call "min cycle" exponents. Once we find these
+ * we can claim that m^(ne + 1) == m % N for all these min cycle exponents. We keep a map that with <k,v> pairs as the
+ * min cycle exponent and the number of messages that have them as their min cycle. In order to make our computations
+ * fast, we also use the same map to check whether we already have a min cycle exponent for a particular message
+ * (instead of recalculating the larger min cycle exponents).
+ *
+ * Finally, we iterate through all the exponents, filtering on gcd(e, PHI) == 1, and iterate through the min cycle map
+ * (which is roughly 36 elements), filtering on (e - 1) % minCycleExponent == 0. These are messages which will map
+ * to themselves under the current exponent. Finally we just count the number of total messages that will map to themselves
+ * for the exponent. Then we take a min across the exponent map, finding those exponents that have the fewest number
+ * of degenerate messages, and sum them up to calculate the final value.
  */
 public class Problem182 implements EulerProblem {
     private static long P = 1009;
