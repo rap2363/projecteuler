@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  *
  * What is the total of all the name scores in the file?
  */
-public class Problem22 implements EulerProblem {
+public final class Problem22 implements EulerProblem {
     private final String[] sortedNames;
 
     public Problem22() {

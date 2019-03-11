@@ -45,7 +45,7 @@ import utils.NumberUtils;
  * for the exponent. Then we take a min across the exponent map, finding those exponents that have the fewest number
  * of degenerate messages, and sum them up to calculate the final value.
  */
-public class Problem182 implements EulerProblem {
+public final class Problem182 implements EulerProblem {
     private static long P = 1009;
     private static long Q = 3643;
     private static long N = P * Q;
