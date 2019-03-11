@@ -28,11 +28,11 @@ public final class Problem100 implements EulerProblem {
     private static final long STARTING_VALUE = 1000000000000L;
 
     public static void main(String[] args) {
-        System.out.println(new Problem100().run());
+        System.out.println(new Problem100().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         for (long totalDisks = STARTING_VALUE; totalDisks < 10 * STARTING_VALUE; totalDisks++) {
             final double radicalValue = 1 + 2 * totalDisks * (totalDisks - 1);
             if (NumberUtils.isPerfectSquare(radicalValue)) {

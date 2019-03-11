@@ -1,5 +1,5 @@
 package problems;
 
 public interface EulerProblem {
-    long run();
+    long get();
 }

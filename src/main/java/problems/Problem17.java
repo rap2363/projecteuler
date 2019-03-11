@@ -15,13 +15,13 @@ import utils.NumberUtils;
  */
 public final class Problem17 implements EulerProblem {
     public static void main(String[] args) {
-        System.out.println((new Problem17()).run());
+        System.out.println((new Problem17()).get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         return IntStream.rangeClosed(1, 1000)
-            .map(NumberUtils::countLetters)
+            .mapToLong(NumberUtils::countLetters)
             .sum();
     }
 }

@@ -48,12 +48,12 @@ public final class Problem18 implements EulerProblem {
             {4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23}
     };
     public static void main(String[] args) {
-        System.out.println(new Problem18().run());
+        System.out.println(new Problem18().get());
     }
 
     @Override
-    public long run() {
-        return 0;
+    public long get() {
+        return 0L;
     }
 }
 

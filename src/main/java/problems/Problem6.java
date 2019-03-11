@@ -8,11 +8,11 @@ import utils.NumberUtils;
 public final class Problem6 implements EulerProblem {
 
     public static void main(String[] args) {
-        System.out.println(new Problem6().run());
+        System.out.println(new Problem6().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         final long sum = NumberUtils.sumOfFirstN(100);
         final long answer = sum * sum - NumberUtils.sumOfFirstNSquares(100);
 

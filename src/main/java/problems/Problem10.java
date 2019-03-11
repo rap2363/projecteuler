@@ -9,15 +9,16 @@ import utils.PrimeSieve;
  */
 public final class Problem10 implements EulerProblem {
     private static final int LIMIT = (int) 2e6;
+
     public static void main(String[] args) {
-        System.out.println(new Problem10().run());
+        System.out.println(new Problem10().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         return new PrimeSieve(LIMIT).getAllPrimes()
-                .stream()
-                .mapToLong(Integer::intValue)
-                .sum();
+            .stream()
+            .mapToLong(Integer::intValue)
+            .sum();
     }
 }

@@ -75,11 +75,11 @@ public final class Problem107 implements EulerProblem {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Problem107().run());
+        System.out.println(new Problem107().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         // Now we pop all the edges off the queue, removing them if they don't disconnect the graph.
         long totalSavingWeight = 0L;
         while (!edges.isEmpty()) {

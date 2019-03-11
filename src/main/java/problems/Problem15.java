@@ -10,16 +10,21 @@ import utils.LatticeDag;
  */
 public final class Problem15 implements EulerProblem {
     private final int gridLength;
+
     public Problem15(final int gridLength) {
         this.gridLength = gridLength;
     }
 
+    public Problem15() {
+        this(20);
+    }
+
     public static void main(String[] args) {
-        System.out.println(new Problem15(20).run());
+        System.out.println(new Problem15(20).get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         final LatticeDag latticeDag = new LatticeDag(gridLength, gridLength, 1);
 
         return latticeDag.getValue(0, 0);

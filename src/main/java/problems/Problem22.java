@@ -35,11 +35,11 @@ public final class Problem22 implements EulerProblem {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Problem22().run());
+        System.out.println(new Problem22().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         return IntStream.range(0, sortedNames.length)
             .mapToLong(i -> getAllCharactersScore(sortedNames[i]) * (i + 1))
             .sum();

@@ -10,12 +10,12 @@ import utils.PrimeSieve;
 public final class Problem7 implements EulerProblem {
     private static final int NTH_PRIME = 10001;
 
-    public static void main(String [] args) {
-        System.out.println(new Problem7().run());
+    public static void main(String[] args) {
+        System.out.println(new Problem7().get());
     }
 
     @Override
-    public long run() {
-        return new PrimeSieve(200000).getNthPrime(NTH_PRIME);
+    public long get() {
+        return (long) new PrimeSieve(200000).getNthPrime(NTH_PRIME);
     }
 }

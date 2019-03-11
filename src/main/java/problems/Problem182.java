@@ -52,11 +52,11 @@ public final class Problem182 implements EulerProblem {
     private static long PHI = (P - 1) * (Q - 1);
 
     public static void main(String[] args) {
-        System.out.println(new Problem182().run());
+        System.out.println(new Problem182().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         final Map<Long, Long> cycleEToCounts = new HashMap<>();
         for (long m = 2; m < N; m++) {
             final long minCycleE = findMinCycleExponent(m, N, cycleEToCounts);

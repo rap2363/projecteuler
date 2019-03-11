@@ -1,11 +1,8 @@
 package problems;
 
-import utils.CompositeSieve;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
+import utils.CompositeSieve;
 
 /**
  * Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
@@ -21,13 +18,13 @@ public final class Problem21 implements EulerProblem {
     private static final int LIMIT = 10000;
 
     public static void main(String[] args) {
-        System.out.println(new Problem21().run());
+        System.out.println(new Problem21().get());
     }
 
     @Override
-    public long run() {
+    public long get() {
         final CompositeSieve compositeSieve = new CompositeSieve(LIMIT);
-        final IntPredicate isAmicableNumber = value ->{
+        final IntPredicate isAmicableNumber = value -> {
             final int sumOfDivisors = compositeSieve.getSumOfDivisors(value);
             if (sumOfDivisors < LIMIT && sumOfDivisors >= 1 && sumOfDivisors != value) {
                 final int backValue = compositeSieve.getSumOfDivisors(sumOfDivisors);
@@ -37,8 +34,8 @@ public final class Problem21 implements EulerProblem {
         };
 
         return IntStream.range(1, LIMIT)
-                .filter(isAmicableNumber)
-                .map(compositeSieve::getSumOfDivisors)
-                .sum();
+            .filter(isAmicableNumber)
+            .mapToLong(compositeSieve::getSumOfDivisors)
+            .sum();
     }
 }
