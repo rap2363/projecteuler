@@ -1,6 +1,6 @@
 package problems;
 
-import utils.NumberUtils;
+import utils.Numbers;
 
 /**
  * If a box contains twenty-one coloured discs, composed of fifteen blue discs and six red discs, and two discs were
@@ -35,7 +35,7 @@ public final class Problem100 implements EulerProblem {
     public long get() {
         for (long totalDisks = STARTING_VALUE; totalDisks < 10 * STARTING_VALUE; totalDisks++) {
             final double radicalValue = 1 + 2 * totalDisks * (totalDisks - 1);
-            if (NumberUtils.isPerfectSquare(radicalValue)) {
+            if (Numbers.isPerfectSquare(radicalValue)) {
                 System.out.println("Total Disks: " + totalDisks);
                 return (long) (0.5 * (1 + Math.sqrt(radicalValue)));
             }

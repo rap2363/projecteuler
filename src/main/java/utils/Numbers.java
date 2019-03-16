@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class NumberUtils {
+public final class Numbers {
 
     /**
      * Return whether or not a number is palindromic (i.e. digits read the same way forward as they do backward).
@@ -92,6 +92,34 @@ public final class NumberUtils {
             allDivisors.add(divisor);
         }
         return allDivisors;
+    }
+
+    public static List<Long> getPrimeFactorization(final long num) {
+        return getPrimeFactorization(new PrimeSieve((int) num), num);
+    }
+
+    public static List<Long> getPrimeFactorization(final PrimeSieve primeSieve, final long num) {
+        return getPrimeFactorization(primeSieve, num, new ArrayList<>());
+    }
+
+    private static List<Long> getPrimeFactorization(final PrimeSieve primeSieve,
+                                                    final long num,
+                                                    final List<Long> appendingList) {
+        final long numPrimes = primeSieve.getAllPrimes().size();
+        if (num == 1) {
+            return appendingList;
+        }
+
+        for (int i = 0; i < numPrimes; i++) {
+            final long primeToCheck = primeSieve.getNthPrime(i + 1);
+
+            if (num % primeToCheck == 0) {
+                appendingList.add(primeToCheck);
+                return getPrimeFactorization(primeSieve, num / primeToCheck, appendingList);
+            }
+        }
+
+        return appendingList;
     }
 
     /**

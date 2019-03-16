@@ -3,7 +3,7 @@ package problems;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import utils.NumberUtils;
+import utils.Numbers;
 
 /**
  * The RSA encryption is based on the following procedure:
@@ -67,7 +67,7 @@ public final class Problem182 implements EulerProblem {
         // Now we can simply cycle through the e values and update counts
         final Map<Long, Long> eToCounts = new HashMap<>();
         for (long e = 2; e < PHI; e++) {
-            if (NumberUtils.gcd(PHI, e) != 1) {
+            if (Numbers.gcd(PHI, e) != 1) {
                 continue;
             }
 
@@ -108,8 +108,8 @@ public final class Problem182 implements EulerProblem {
         // First check the counts map to see if our min cycle exponent already exists there
         return cycleEToCounts.keySet()
             .stream()
-            .filter(e -> NumberUtils.modPower(m, e, n) == 1)
+            .filter(e -> Numbers.modPower(m, e, n) == 1)
             .min(Long::compare)
-            .orElseGet(() -> NumberUtils.findCycleExponent(m, n) - 1);
+            .orElseGet(() -> Numbers.findCycleExponent(m, n) - 1);
     }
 }

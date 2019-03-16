@@ -1,7 +1,6 @@
 package utils;
 
 import com.google.common.base.Preconditions;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,27 +11,16 @@ import java.util.List;
  * we are left with that are true in our array are prime.
  */
 public final class PrimeSieve {
-    private final int N;
-    private final int numPrimes;
-    private final boolean[] primesInArray;
     private final List<Integer> primesAsList;
 
     public PrimeSieve(final int N) {
-        this.N = N;
-        this.primesInArray = sievePrimes(N);
-        this.primesAsList = getPrimesAsList(this.primesInArray);
-        this.numPrimes = this.primesAsList.size();
-    }
-
-    public boolean isPrime(final int n) {
-        Preconditions.checkArgument(n > 0 && n < this.N);
-        return this.primesInArray[n - 1];
+        this.primesAsList = getPrimesAsList(sievePrimes(N));
     }
 
     public int getNthPrime(final int n) {
         Preconditions.checkArgument(
-                n <= this.primesAsList.size(),
-                "Prime Sieve found only %s values!", this.numPrimes
+            n <= this.primesAsList.size(),
+            "Prime Sieve found only %s values!", this.primesAsList.size()
         );
         return this.primesAsList.get(n - 1);
     }
@@ -48,10 +36,6 @@ public final class PrimeSieve {
         }
 
         return primes;
-    }
-
-    public int getNumPrimes() {
-        return this.numPrimes;
     }
 
     public List<Integer> getAllPrimes() {

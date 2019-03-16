@@ -1,6 +1,6 @@
 package problems;
 
-import utils.NumberUtils;
+import utils.Numbers;
 
 /**
  * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is
@@ -21,7 +21,7 @@ public final class Problem4 implements EulerProblem {
         for (int x = 0; x < THREE_DIGIT_UPPER_BOUND; x++) {
             for (int y = 0; y < THREE_DIGIT_UPPER_BOUND; y++) {
                 int product = x * y;
-                if (NumberUtils.isPalindrome(product)) {
+                if (Numbers.isPalindrome(product)) {
                     largestProduct = Math.max(largestProduct, product);
                 }
             }

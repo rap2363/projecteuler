@@ -1,6 +1,6 @@
 package problems;
 
-import utils.NumberUtils;
+import utils.Numbers;
 
 /**
  * 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
@@ -17,7 +17,7 @@ public final class Problem5 implements EulerProblem {
     public long get() {
         long currentLCM = 1;
         for (int i = 1; i <= 20; i++) {
-            currentLCM = NumberUtils.lcm(currentLCM, i);
+            currentLCM = Numbers.lcm(currentLCM, i);
         }
         return currentLCM;
     }

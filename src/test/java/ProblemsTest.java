@@ -10,7 +10,9 @@ import problems.Problem11;
 import problems.Problem12;
 import problems.Problem15;
 import problems.Problem17;
+import problems.Problem187;
 import problems.Problem21;
+import problems.Problem266;
 import problems.Problem4;
 import problems.Problem5;
 import problems.Problem59;
@@ -32,8 +34,10 @@ public final class ProblemsTest {
         .put(Problem17.class, 21124L)
         .put(Problem21.class, 31626L)
         .put(Problem59.class, 107359L)
-        // .put(Problem182.class, 399788195976L) // Remove comment to test, takes roughly 1 minute
         .put(Problem107.class, 259679L)
+        // .put(Problem182.class, 399788195976L) // Remove comment to test, takes roughly 1 minute
+        .put(Problem187.class, 17427258L)
+        .put(Problem266.class, 1096883702440585L)
         .build();
 
     @Test
