@@ -5,11 +5,9 @@ package utils;
  * slot in the array will be populated with the sum of that number's proper divisors.
  */
 public final class CompositeSieve {
-    private final int N;
     private final int[] divisorSums;
 
     public CompositeSieve(final int N) {
-        this.N = N;
         divisorSums = sieveComposites(N);
     }
 
@@ -17,7 +15,7 @@ public final class CompositeSieve {
         return this.divisorSums[n - 1];
     }
 
-    private int[] sieveComposites(final int N) {
+    private static int[] sieveComposites(final int N) {
         final int[] divisorSums = new int[N - 1];
         for (int divisor = 1; divisor < ((N / 2) + 1); divisor++) {
             for (int i = 2 * divisor; i < N; i += divisor) {

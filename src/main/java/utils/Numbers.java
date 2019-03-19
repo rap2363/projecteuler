@@ -7,6 +7,8 @@ import java.util.List;
 
 public final class Numbers {
 
+    private static final double LOG_2 = Math.log(2);
+
     /**
      * Return whether or not a number is palindromic (i.e. digits read the same way forward as they do backward).
      *
@@ -277,5 +279,9 @@ public final class Numbers {
             cycleN++;
         } while (base != newNumber);
         return cycleN;
+    }
+
+    public static double log2(final double value) {
+        return Math.log(value) / LOG_2;
     }
 }
