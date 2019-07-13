@@ -20,7 +20,7 @@ public final class Problem211 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         long totalSum = 0L;
         final SquaredCompositeSieve squaredCompositeSieve = new SquaredCompositeSieve(LIMIT);
         for (long num = 1; num < LIMIT; num++) {

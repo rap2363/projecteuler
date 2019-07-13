@@ -45,7 +45,7 @@ public final class Problem266 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final List<LogPrime> logPrimes = new PrimeSieve(MAX_PRIME).getAllPrimes()
             .stream()
             .map(p -> new LogPrime(p, Math.log(p)))

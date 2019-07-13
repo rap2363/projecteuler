@@ -44,7 +44,7 @@ public final class Problem11 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final NumberGrid numberGrid = new NumberGrid(ALL_NUMBERS, M, N);
         final NumberGrid.SearchValue searchValue = numberGrid.findMaximizingValue(
             l -> l.stream().map(Math::log).mapToDouble(Double::doubleValue).sum(),

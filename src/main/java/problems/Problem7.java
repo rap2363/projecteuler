@@ -15,7 +15,7 @@ public final class Problem7 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         return (long) new PrimeSieve(200000).getNthPrime(NTH_PRIME);
     }
 }

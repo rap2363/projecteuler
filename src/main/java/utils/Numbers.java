@@ -136,6 +136,15 @@ public final class Numbers {
         return (a * b) / gcd(a, b);
     }
 
+    public static long averageLcm(final long a) {
+        long averageLcm = 0L;
+        for (int i = 1; i <= a; i++) {
+            averageLcm += lcm(a, i) / a;
+        }
+
+        return averageLcm;
+    }
+
     /**
      * Return the sum of the first n integers
      *
@@ -283,5 +292,15 @@ public final class Numbers {
 
     public static double log2(final double value) {
         return Math.log(value) / LOG_2;
+    }
+
+    public static boolean isPrime(final long value) {
+        for (int i = 2; i < Math.sqrt(value); i++) {
+            if (value % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

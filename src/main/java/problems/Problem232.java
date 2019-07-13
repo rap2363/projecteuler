@@ -30,49 +30,59 @@ public final class Problem232 implements EulerProblem {
     private static final double PRECISION = 100000000;
     private static final double UNEVALUATED = -1;
 
+    private final int maxScore;
+
     public static void main(String[] args) {
-        System.out.println("0." + new Problem232().get());
+        System.out.println(new Problem232().get());
+    }
+
+    public Problem232() {
+        this(MAX_SCORE);
+    }
+
+    public Problem232(final int maxScore) {
+        this.maxScore = maxScore;
     }
 
     @Override
-    public long get() {
-        final double[][] probabilityMatrix = new double[MAX_SCORE + 1][MAX_SCORE + 1];
-        final int[][] optimalActionsMatrix = new int[MAX_SCORE + 1][MAX_SCORE + 1];
+    public Double get() {
+        final double[][] probabilityMatrix = new double[maxScore + 1][maxScore + 1];
+        final int[][] optimalActionsMatrix = new int[maxScore + 1][maxScore + 1];
 
-        for (int s1 = 0; s1 <= MAX_SCORE; s1++) {
-            for (int s2 = 0; s2 <= MAX_SCORE; s2++) {
+        for (int s1 = 0; s1 <= maxScore; s1++) {
+            for (int s2 = 0; s2 <= maxScore; s2++) {
                 probabilityMatrix[s1][s2] = UNEVALUATED;
             }
         }
 
         // P2 wins for all of these entries
-        for (int s1 = 0; s1 <= MAX_SCORE; s1++) {
-            probabilityMatrix[s1][MAX_SCORE] = 1;
+        for (int s1 = 0; s1 <= maxScore; s1++) {
+            probabilityMatrix[s1][maxScore] = 1;
         }
 
         // P2 loses for all of these entries
-        for (int s2 = 0; s2 < MAX_SCORE; s2++) {
-            probabilityMatrix[MAX_SCORE][s2] = 0;
+        for (int s2 = 0; s2 < maxScore; s2++) {
+            probabilityMatrix[maxScore][s2] = 0;
         }
 
         // Evaluate the entries in the matrix
-        for (int s2 = MAX_SCORE - 1; s2 >= 0; s2--) {
-            for (int s1 = MAX_SCORE - 1; s1 >= 0; s1--) {
+        for (int s2 = maxScore - 1; s2 >= 0; s2--) {
+            for (int s1 = maxScore - 1; s1 >= 0; s1--) {
                 final double winningProbability
                     = getWinningProbability(s1, s2, probabilityMatrix, optimalActionsMatrix);
                 probabilityMatrix[s1][s2] = winningProbability;
             }
         }
 
-        for (int s1 = 0; s1 <= MAX_SCORE; s1++) {
-            for (int s2 = 0; s2 <= MAX_SCORE; s2++) {
-                System.out.print(optimalActionsMatrix[s1][s2] + " ");
-            }
-            System.out.println();
-        }
+        //        for (int s1 = 0; s1 <= maxScore; s1++) {
+        //            for (int s2 = 0; s2 <= maxScore; s2++) {
+        //                System.out.print(optimalActionsMatrix[s1][s2] + " ");
+        //            }
+        //            System.out.println();
+        //        }
 
         final double winningProbability = 0.5 * (probabilityMatrix[0][0] + probabilityMatrix[1][0]);
-        return Math.round(winningProbability * PRECISION);
+        return Math.round(winningProbability * PRECISION) / PRECISION;
     }
 
     private double getWinningProbability(final int s1,
@@ -80,7 +90,7 @@ public final class Problem232 implements EulerProblem {
                                          final double[][] probabilityMatrix,
                                          final int[][] optimalActionsMatrix) {
         // Evaluate the recurrence relation for all t from 0 to 100 (until s2 is guaranteed to win with a lower t).
-        final int maxT = (int) Math.ceil(Numbers.log2(MAX_SCORE - s2) + 1);
+        final int maxT = (int) Math.ceil(Numbers.log2(maxScore - s2) + 1);
         double maxProbability = UNEVALUATED;
 
         for (int T = 1; T <= maxT; T++) {
@@ -89,7 +99,8 @@ public final class Problem232 implements EulerProblem {
             final double denominator = 1 / (Math.pow(2, T) + 1);
             final double numerator = twoToTheT - 1;
             final double value = denominator * (
-                probabilityMatrix[s1][cappedIndex(s2 + twoToTheTMinusOne)] + probabilityMatrix[cappedIndex(s1 + 1)][cappedIndex(s2 + twoToTheTMinusOne)]
+                probabilityMatrix[s1][cappedIndex(s2 + twoToTheTMinusOne)]
+                    + probabilityMatrix[cappedIndex(s1 + 1)][cappedIndex(s2 + twoToTheTMinusOne)]
                     + numerator * probabilityMatrix[cappedIndex(s1 + 1)][s2]);
 
             if (value > maxProbability) {
@@ -101,7 +112,7 @@ public final class Problem232 implements EulerProblem {
         return maxProbability;
     }
 
-    private static int cappedIndex(final int index) {
-        return Math.min(MAX_SCORE, index);
+    private int cappedIndex(final int index) {
+        return Math.min(maxScore, index);
     }
 }

@@ -79,7 +79,7 @@ public final class Problem107 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         // Now we pop all the edges off the queue, removing them if they don't disconnect the graph.
         long totalSavingWeight = 0L;
         while (!edges.isEmpty()) {

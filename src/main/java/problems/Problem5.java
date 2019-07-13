@@ -14,7 +14,7 @@ public final class Problem5 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         long currentLCM = 1;
         for (int i = 1; i <= 20; i++) {
             currentLCM = Numbers.lcm(currentLCM, i);

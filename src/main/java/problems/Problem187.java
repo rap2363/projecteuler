@@ -26,7 +26,7 @@ public final class Problem187 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final List<Integer> primes = new PrimeSieve((int) MAX_NUM / 2).getAllPrimes();
         long total = 0L;
         for (int i = 0; i < primes.size(); i++) {

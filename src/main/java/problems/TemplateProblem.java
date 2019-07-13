@@ -7,7 +7,7 @@ public final class TemplateProblem implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Number get() {
         return 0L;
     }
 }

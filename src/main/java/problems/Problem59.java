@@ -66,7 +66,7 @@ public final class Problem59 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final SortedSet<DecryptedResult> topResults = new TreeSet<>(DecryptedResult.comparator);
         for (char first = LOWER_CASE_A; first <= LOWER_CASE_Z; first++) {
             for (char second = LOWER_CASE_A; second <= LOWER_CASE_Z; second++) {

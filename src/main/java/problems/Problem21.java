@@ -22,7 +22,7 @@ public final class Problem21 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final CompositeSieve compositeSieve = new CompositeSieve(LIMIT);
         final IntPredicate isAmicableNumber = value -> {
             final int sumOfDivisors = compositeSieve.getSumOfDivisors(value);

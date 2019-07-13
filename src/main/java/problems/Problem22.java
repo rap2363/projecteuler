@@ -39,7 +39,7 @@ public final class Problem22 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         return IntStream.range(0, sortedNames.length)
             .mapToLong(i -> getAllCharactersScore(sortedNames[i]) * (i + 1))
             .sum();

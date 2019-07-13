@@ -56,7 +56,7 @@ public final class Problem182 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final Map<Long, Long> cycleEToCounts = new HashMap<>();
         for (long m = 2; m < N; m++) {
             final long minCycleE = findMinCycleExponent(m, N, cycleEToCounts);

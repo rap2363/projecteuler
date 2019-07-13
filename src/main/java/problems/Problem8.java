@@ -37,7 +37,7 @@ public final class Problem8 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         // To avoid overflow issues, instead of multiplying 13 digits, we'll add their logs.
         // max(sum(log(x)) == max(prod(x))
         final double[] LOG_DIGITS = new double[DIGITS.length];

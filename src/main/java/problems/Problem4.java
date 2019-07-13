@@ -16,7 +16,7 @@ public final class Problem4 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         long largestProduct = 0;
         for (int x = 0; x < THREE_DIGIT_UPPER_BOUND; x++) {
             for (int y = 0; y < THREE_DIGIT_UPPER_BOUND; y++) {

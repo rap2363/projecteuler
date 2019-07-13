@@ -52,7 +52,7 @@ public final class Problem18 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         return 0L;
     }
 }

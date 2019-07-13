@@ -32,7 +32,7 @@ public final class Problem100 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         for (long totalDisks = STARTING_VALUE; totalDisks < 10 * STARTING_VALUE; totalDisks++) {
             final double radicalValue = 1 + 2 * totalDisks * (totalDisks - 1);
             if (Numbers.isPerfectSquare(radicalValue)) {

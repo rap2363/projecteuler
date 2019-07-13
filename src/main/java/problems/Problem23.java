@@ -30,7 +30,7 @@ public final class Problem23 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final CompositeSieve compositeSieve = new CompositeSieve(LIMIT);
         final List<Integer> abundantNumbers = IntStream.range(1, LIMIT)
             .filter(n -> compositeSieve.getSumOfDivisors(n) > n)

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 public class NumbersTest {
@@ -35,12 +36,43 @@ public class NumbersTest {
     }
 
     @Test
+    public void testAverageLeastCommonMultiple() {
+        long total100 = 0;
+        for (int i = 1; i <= 100; i++) {
+            System.out.println(i + ": " + Numbers.averageLcm(i));
+            total100 += Numbers.averageLcm(i);
+        }
+
+        System.out.println("Total: " + total100);
+        long anotherTotal = 0;
+        long limit = 100;
+        for (long x = 1; x <= limit; x++) {
+            for (long y = 1; y <= x; y++) {
+                anotherTotal += y / Numbers.gcd(x, y);
+            }
+        }
+        System.out.println("Another total: " + anotherTotal);
+
+        System.out.println(Numbers.isPrime(999999017));
+        System.out.println(99999999019L / 999999017);
+        System.out.println(99999999019L % 999999017);
+        long total = 0;
+        for (int i = 1; i <= 101; i++) {
+            final long value = i / Numbers.gcd(i, 101);
+            System.out.println(i + ". " + value);
+            total += value;
+        }
+        System.out.println(total);
+    }
+
+    @Test
     public void testGetDivisors() {
         assertEquals(Arrays.asList(1, 2, 3, 4, 6, 12), Numbers.getDivisors(12));
     }
 
     @Test
     public void testPrimeFactorization() {
+        assertEquals(Collections.singletonList(17L), Numbers.getPrimeFactorization(17));
         assertEquals(Arrays.asList(2L, 2L, 3L), Numbers.getPrimeFactorization(12));
         assertEquals(Arrays.asList(23L, 41L), Numbers.getPrimeFactorization(943));
         assertEquals(Arrays.asList(13L, 17L, 23L, 41L), Numbers.getPrimeFactorization(208403));

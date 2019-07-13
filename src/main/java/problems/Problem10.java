@@ -15,7 +15,7 @@ public final class Problem10 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         return new PrimeSieve(LIMIT).getAllPrimes()
             .stream()
             .mapToLong(Integer::intValue)

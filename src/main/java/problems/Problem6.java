@@ -12,7 +12,7 @@ public final class Problem6 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final long sum = Numbers.sumOfFirstN(100);
         final long answer = sum * sum - Numbers.sumOfFirstNSquares(100);
 

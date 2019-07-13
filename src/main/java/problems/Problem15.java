@@ -24,7 +24,7 @@ public final class Problem15 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         final LatticeDag latticeDag = new LatticeDag(gridLength, gridLength, 1);
 
         return latticeDag.getValue(0, 0);

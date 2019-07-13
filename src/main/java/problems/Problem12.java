@@ -30,7 +30,7 @@ public final class Problem12 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         long triangularNumber = 1;
         long i = 2;
         while (Numbers.getDivisors(triangularNumber).size() < 500) {

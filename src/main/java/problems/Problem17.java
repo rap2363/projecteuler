@@ -19,7 +19,7 @@ public final class Problem17 implements EulerProblem {
     }
 
     @Override
-    public long get() {
+    public Long get() {
         return IntStream.rangeClosed(1, 1000)
             .mapToLong(Numbers::countLetters)
             .sum();
